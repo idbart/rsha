@@ -13,7 +13,12 @@ fn main()
 	let filename = match args.nth(1) {
 		Some(data) => data,
 		// if the user did not input a file, panic for now (better soloution tbd)
-		None => panic!("ERROR: cannot find file")
+		None => {
+			println!("ERROR: cannot find file");
+			cio::usage();
+
+			panic!();
+		}
 	};
 
 	println!("Calculating hash...");
