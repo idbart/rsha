@@ -1,5 +1,6 @@
 mod cio;
 mod hashing;
+mod parsing;
 
 use std::env;
 use hex;
@@ -23,9 +24,11 @@ fn main()
 
 	println!("Calculating hash...");
 
-	// get the bytes of the file and then calc the final hash
-	let file = cio::get_file_byte_array(&filename);
-	let final_hash = hashing::get_hash(&file);
+	// get the file bytes
+	let mut file_bytes = Box::new(cio::get_file_byte_array(&filename));
+
+	// and then calc the final hash
+	let final_hash = hashing::get_hash(&mut file_bytes);
 	// print the hash to screen (hex formatting tbd)
 	println!("{}{}{}{}{}{}{}{}", final_hash[0], final_hash[1], final_hash[2], final_hash[3], final_hash[4], final_hash[5], final_hash[6], final_hash[7]);
 }

@@ -9,7 +9,7 @@ pub fn usage()
 }
 
 // open a file and 
-pub fn get_file_byte_array(file: &String) -> Box<Vec<u8>>
+pub fn get_file_byte_array(file: &String) -> Vec<u8>
 {
 	// try to open file
 	let data = match fs::read(Path::new(file)) {
@@ -21,6 +21,6 @@ pub fn get_file_byte_array(file: &String) -> Box<Vec<u8>>
 		}
 	};
 	
-	// return ownership of a new box containing the data
-	Box::new(data)
+	// return ownership the data
+	data
 }
