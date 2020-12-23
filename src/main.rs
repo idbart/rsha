@@ -22,13 +22,11 @@ fn main()
 		}
 	};
 
-	println!("Calculating hash...");
-
 	// get the file bytes
 	let mut file_bytes = Box::new(cio::get_file_byte_array(&filename));
 
 	// and then calc the final hash
 	let final_hash = hashing::get_hash(&mut file_bytes);
-	// print the hash to screen (hex formatting tbd)
-	println!("{}{}{}{}{}{}{}{}", final_hash[0], final_hash[1], final_hash[2], final_hash[3], final_hash[4], final_hash[5], final_hash[6], final_hash[7]);
+	// print the hash to screen
+	println!("{}{}{}{}{}{}{}{}", hex::encode(final_hash[0].to_ne_bytes()), hex::encode(final_hash[1].to_ne_bytes()), hex::encode(final_hash[2].to_ne_bytes()), hex::encode(final_hash[3].to_ne_bytes()), hex::encode(final_hash[4].to_ne_bytes()), hex::encode(final_hash[5].to_ne_bytes()), hex::encode(final_hash[6].to_ne_bytes()), hex::encode(final_hash[7].to_ne_bytes()));
 }
